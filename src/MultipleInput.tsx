@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import CloseIconLarge from './CloseIcon/CloseIconLarge';
+import RemoveButton from './RemoveButton';
 import CloseIconSmall from './CloseIcon/CloseIconSmall';
+import CloseIconLarge from './CloseIcon/CloseIconLarge';
 import './MultipleInput.css';
 
 type Props = {};
@@ -108,9 +109,9 @@ class MultipleInput extends Component<Props, MultipleInputState> {
           onChange={this.handleChange}
           onKeyUp={this.onKeyupHandler}
         />
-        <button onClick={() => this.onRemoveAll()}>
+        <RemoveButton onClick={() => this.onRemoveAll()}>
           <CloseIconLarge/>
-        </button>
+        </RemoveButton>
 
       </div>
     );
