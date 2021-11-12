@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import CloseIcon from './CloseIcon';
+import CloseIconLarge from './CloseIcon/CloseIconLarge';
+import CloseIconSmall from './CloseIcon/CloseIconSmall';
 import './MultipleInput.css';
 type Props = {};
 type MultipleInputState = {
@@ -73,7 +74,7 @@ class MultipleInput extends Component<Props, MultipleInputState> {
           <div className="pillbox">
             {input}
             <button onClick={() => this.onRemove(input)}>
-              <CloseIcon style={{ height: '7.5px', width: '7.5px', padding: '2.5px'}}/>
+              <CloseIconSmall />
             </button>
           </div>))
         }
@@ -85,7 +86,7 @@ class MultipleInput extends Component<Props, MultipleInputState> {
           onKeyPress={this.onEnter}
         />
         <button onClick={() => this.onRemoveAll()}>
-          <CloseIcon style={{ height: '10px', width: '10px', padding: '3px'}}/>
+          <CloseIconLarge/>
         </button>
 
       </div>
