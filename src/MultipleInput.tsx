@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CloseIcon from './CloseIcon';
 import './MultipleInput.css';
 type Props = {};
 type MultipleInputState = {
@@ -24,18 +25,22 @@ class MultipleInput extends Component<Props, MultipleInputState> {
   }
 
   // remove single item from the list
-  onRemove(index: number) {
-
+  onRemove(input: string){
+    const newInputList = this.state.inputList.filter(inputString => inputString !== input)
+    this.setState({ inputList: newInputList });
   }
 
   // remove all items from the list
   onRemoveAll() {
-
+    this.setState({ inputList: [] });
   }
 
   // push text to the list on Enter
+  // if there is any text input and if the same text is not already selected
   onEnter(event: any) {
-    if (event.key === 'Enter' && this.state.input.length > 0) {
+    if (event.key === 'Enter' 
+    && this.state.input.length > 0 
+    && !this.state.inputList.includes(this.state.input)) {
       const inputList = this.state.inputList;
       inputList.push(this.state.input);
       this.setState({ inputList, input: '' })
@@ -52,7 +57,6 @@ class MultipleInput extends Component<Props, MultipleInputState> {
     // I'd say going for a bounding box of <div> for the beginning 
     // could be good, with pills and input type text
     // style is WIP
-    console.log(this.state);
     return (
       <div style={{ 
         margin: '3rem', 
@@ -68,12 +72,9 @@ class MultipleInput extends Component<Props, MultipleInputState> {
         { this.state.inputList.map((input: string) => (
           <div className="pillbox">
             {input}
-            <button
-              style={{
-                background: 'none',
-                border: 'none',
-              }}
-            >X</button>
+            <button onClick={() => this.onRemove(input)}>
+              <CloseIcon style={{ height: '7.5px', width: '7.5px', padding: '2.5px'}}/>
+            </button>
           </div>))
         }
         <input
@@ -83,6 +84,10 @@ class MultipleInput extends Component<Props, MultipleInputState> {
           onChange={this.handleChange}
           onKeyPress={this.onEnter}
         />
+        <button onClick={() => this.onRemoveAll()}>
+          <CloseIcon style={{ height: '10px', width: '10px', padding: '3px'}}/>
+        </button>
+
       </div>
     );
   }
