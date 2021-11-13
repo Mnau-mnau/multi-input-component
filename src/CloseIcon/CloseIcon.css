@@ -1,10 +1,10 @@
-.closeIcon {
-  height: 10px;
-  width: 10px;
+.closeIcon {  
+  height: 12px;
+  width: 12px;
   padding: 3px;
+  margin-left: 0.5rem;
 }
 
 .closeIcon path {
-  stroke: "black";
-  fill: "black";
+  fill: #727272;
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import RemoveButton from './RemoveButton';
-import CloseIconSmall from './CloseIcon/CloseIconSmall';
+import Pillbox from './Pillbox';
 import CloseIconLarge from './CloseIcon/CloseIconLarge';
 import './MultipleInput.css';
 
@@ -95,12 +95,7 @@ class MultipleInput extends Component<Props, MultipleInputState> {
         alignContent: 'center',
         }}>
         { this.state.inputList.map((input: string) => (
-          <div className="pillbox" key={input}>
-            {input}
-            <button onClick={() => this.onRemove(input)}>
-              <CloseIconSmall />
-            </button>
-          </div>))
+          <Pillbox onClick={() => this.onRemove(input)} input={input} />))
         }
         <input
           style={{ border: 'none', marginLeft: '5px'}}

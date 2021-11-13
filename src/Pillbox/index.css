@@ -1,0 +1,51 @@
+.Pillbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  
+  position: static;
+  /* width: 63px; */
+  height: 24px;
+  left: 0px;
+  top: 0px;
+
+  background: #EEEEEE;
+  border-radius: 4px;
+
+/* Inside Auto Layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 4px;
+}
+
+.Pillbox_label {
+  position: static;
+  width: 27px;
+  height: 16px;
+  left: 8px;
+
+
+  /* Input/Medium */
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+
+  /* identical to box height, or 114% */
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  /* Grayscale/Gray 900 (4B) */
+  color: #2A2A2A;
+
+  /* Inside Auto Layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 4px;
+}

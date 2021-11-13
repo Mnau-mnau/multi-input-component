@@ -5,9 +5,9 @@ export default function CloseIconLarge() {
     return (
         <CloseIcon 
             style={{
-                height: '10px',
-                width: '10px',
-                padding: '3px'
+                height: '13.4px',
+                width: '13.4px',
+                padding: '4px'
             }}
         />
     );
