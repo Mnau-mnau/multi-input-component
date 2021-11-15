@@ -1,0 +1,7 @@
+.TextInput {
+  border: 'none';
+  align-self: 'stretch';
+  width: inherit;
+  min-width: 60px;
+  flex-grow: 1;
+}

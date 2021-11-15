@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TextInput from './TextInput';
 import RemoveButton from './RemoveButton';
 import Pillbox from './Pillbox';
 import CloseIconLarge from './CloseIcon/CloseIconLarge';
@@ -78,36 +79,25 @@ class MultipleInput extends Component<Props, MultipleInputState> {
   }
 
   render() {
-    // I'd say going for a bounding box of <div> for the beginning 
-    // could be good, with pills and input type text
-    // style is WIP
-    console.log(this.state);
+    // render removeAll button on condition
+    // style is still WIP
     return (
-      <div style={{ 
-        margin: '3rem', 
-        border: '1px solid black', 
-        borderRadius: '5px', 
-        width: '320px', 
-        height: '32px', 
-        display:'flex',
-        flexDirection: 'row',
-        justifyContent:'flex-start',
-        alignContent: 'center',
-        }}>
+      <div
+        className="MultipleValueInput"
+      >
         { this.state.inputList.map((input: string) => (
           <Pillbox onClick={() => this.onRemove(input)} input={input} />))
         }
-        <input
-          style={{ border: 'none', marginLeft: '5px'}}
-          type="text"
-          value={this.state.input}
+        <TextInput
+          input={this.state.input}
           onChange={this.handleChange}
           onKeyUp={this.onKeyupHandler}
         />
+        {this.state.inputList.length > 0 ?
         <RemoveButton onClick={() => this.onRemoveAll()}>
           <CloseIconLarge/>
-        </RemoveButton>
-
+        </RemoveButton> :
+        ''}
       </div>
     );
   }
