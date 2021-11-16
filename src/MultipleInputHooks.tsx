@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef, forwardRef } from 'react';
 import TextInput from './TextInput';
 import RemoveButton from './RemoveButton';
 import Pillbox from './Pillbox';
@@ -23,38 +23,39 @@ const MultipleInput: React.FunctionComponent = () => {
     setInputList([]);
   }
 
-  function onKeyupHandler(event: any): void {
-    switch (event.key) {
-      case 'Enter':
-        onEnter();
-        break;
-      case 'Backspace':
-        onBackspace();
-        break;
-      default:
-        break;
+  // keyboard events
+  useEffect(() => {
+    const onKeyUp = (event: any) => {
+      switch (event.key) {
+        case 'Enter':
+          const trimmed: string = input.trim();
+          if (input.length > 0 
+          && !inputList.includes(trimmed)) {
+            inputList.push(trimmed);
+            setInputList(inputList);
+            setInput('');
+          }
+          break;
+        // this works but doesn't rerender
+        case 'Backspace':
+          if (input.length < 1 && inputList.length > 0) {
+            const reducedList = inputList;
+            reducedList.pop();
+            console.log(reducedList)
+            setInputList(reducedList);
+          }
+          break;
+        default:
+          break;
+      }
     }
-  }
-  // push text to the list on Enter
-  // if there is any text input and if the same text is not already selected
 
-  const onEnter = () => {
-    const trimmed: string = input.trim();
-    if (input.length > 0 
-    && !inputList.includes(trimmed)) {
-      const newInputList: string[] = inputList;
-      newInputList.push(trimmed);
-      setInputList(newInputList);
-    }
-  }
+    document.addEventListener('keyup', onKeyUp);
 
-  function onBackspace() {
-    if (input.length < 1 && inputList.length > 0) {
-      const newInputList: string[] = inputList;
-      newInputList.pop();
-      setInputList(newInputList);
+    return () => {
+        document.removeEventListener('keyup', onKeyUp);
     }
-  }
+  });
 
   // handle writing into the text input
   const handleChange = (event: any) =>  {
