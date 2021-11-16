@@ -83,24 +83,18 @@ const MultipleInput: React.FunctionComponent = () => {
     <div
       id="MultipleValueInput"
       className="MultipleValueInput"
-      tabIndex={0}
       // onFocus={ handleFocus }
     >
       { inputList.map((item: string) => (
         <Pillbox onClick={() => onRemove(item)} input={item} key={item}/>))
       }
-
-      <TextInput 
+      <TextInput
         forwardedRef={textInputRef}
         input={input}
+        inputList={inputList}
         onChange={ handleChange }
+        onRemoveAll={onRemoveAll}
       />
-
-      {inputList.length > 0 ?
-      <RemoveButton onClick={() => onRemoveAll()}>
-        <CloseIconLarge/>
-      </RemoveButton> :
-      ''}
     </div>
   );
 }

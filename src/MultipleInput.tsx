@@ -91,14 +91,10 @@ class MultipleInput extends Component<Props, MultipleInputState> {
         <TextInput
           forwardedRef={{}}
           input={this.state.input}
+          inputList={this.state.inputList}
           onChange={this.handleChange}
+          onRemoveAll={this.onRemoveAll}
         />
-
-        {this.state.inputList.length > 0 ?
-        <RemoveButton onClick={() => this.onRemoveAll()}>
-          <CloseIconLarge/>
-        </RemoveButton> :
-        ''}
       </div>
     );
   }

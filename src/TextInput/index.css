@@ -1,7 +1,24 @@
 .TextInput {
-  border: 'none';
   align-self: 'stretch';
-  width: inherit;
-  min-width: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   flex-grow: 1;
+  height: 28px ;
+  background: none;
+  border:none;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+.TextInput_input {
+  flex-grow: 1;
+  height: inherit ;
+  border:none;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background: none;
+}
+.TextInput_input:focus-visible {
+  outline: none;
 }
