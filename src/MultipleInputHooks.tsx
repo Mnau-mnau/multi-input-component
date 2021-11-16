@@ -58,23 +58,44 @@ const MultipleInput: React.FunctionComponent = () => {
   });
 
   // handle writing into the text input
-  const handleChange = (event: any) =>  {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>  {
     setInput(event.target.value);
   }
 
+  const textInputRef: any = useRef<HTMLInputElement>(null);
+
+  // function handleFocus(event: React.FocusEvent<HTMLDivElement>) {
+  //   console.log('onFocus called');
+  //   if (textInputRef.current !== null) {
+  //     textInputRef.current.focus();
+  //   }
+  // }
+
+  // const ForwardedRefTextInput = forwardRef((props, ref) => 
+  //   <TextInput 
+  //     forwardedRef={textInputRef}
+  //     input={input}
+  //     onChange={ handleChange }
+  //   />
+  // );
 
   return (
     <div
+      id="MultipleValueInput"
       className="MultipleValueInput"
+      tabIndex={0}
+      // onFocus={ handleFocus }
     >
-      { inputList.map((inputString: string) => (
-        <Pillbox onClick={() => onRemove(input)} input={inputString} />))
+      { inputList.map((item: string) => (
+        <Pillbox onClick={() => onRemove(item)} input={item} key={item}/>))
       }
-      <TextInput
+
+      <TextInput 
+        forwardedRef={textInputRef}
         input={input}
-        onChange={handleChange}
-        onKeyUp={onKeyupHandler}
+        onChange={ handleChange }
       />
+
       {inputList.length > 0 ?
       <RemoveButton onClick={() => onRemoveAll()}>
         <CloseIconLarge/>
