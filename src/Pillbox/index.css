@@ -18,7 +18,7 @@
   flex: none;
   order: 0;
   flex-grow: 0;
-  margin: 0px 4px;
+  margin: 2px 4px;
 }
 
 .Pillbox_label {
@@ -47,4 +47,5 @@
   order: 0;
   flex-grow: 0;
   margin: 0px 4px;
+
 }
