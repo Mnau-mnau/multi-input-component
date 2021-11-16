@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import TextInput from './TextInput';
-import RemoveButton from './RemoveButton';
 import Pillbox from './Pillbox';
-import CloseIconLarge from './CloseIcon/CloseIconLarge';
 import './MultipleInput.css';
 
 type Props = {};
@@ -89,11 +87,11 @@ class MultipleInput extends Component<Props, MultipleInputState> {
           <Pillbox onClick={() => this.onRemove(input)} input={input} />))
         }
         <TextInput
-          forwardedRef={{}}
           input={this.state.input}
           inputList={this.state.inputList}
           onChange={this.handleChange}
           onRemoveAll={this.onRemoveAll}
+          onKeyDown={this.onKeyupHandler}
         />
       </div>
     );
