@@ -5,7 +5,7 @@ import Pillbox from './Pillbox';
 import CloseIconLarge from './CloseIcon/CloseIconLarge';
 import './MultipleInput.css';
 
-export default function MultipleInput() {
+const MultipleInput: React.FunctionComponent = () => {
 
   // set state variables
   const [input, setInput] = useState<string>('');
@@ -81,3 +81,5 @@ export default function MultipleInput() {
     </div>
   );
 }
+
+export default MultipleInput;
