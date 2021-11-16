@@ -6,7 +6,9 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <MultipleInputHooks />
+    <div className="presentationPlacement">
+      <MultipleInputHooks />
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 );
