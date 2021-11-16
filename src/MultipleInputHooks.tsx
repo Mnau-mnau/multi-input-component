@@ -51,22 +51,12 @@ const MultipleInput: React.FunctionComponent = () => {
     setInput(event.target.value);
   }
 
-  const textInputRef: any = useRef<HTMLInputElement>(null);
-
-  // function handleFocus(event: React.FocusEvent<HTMLDivElement>) {
-  //   console.log('onFocus called');
-  //   if (textInputRef.current !== null) {
-  //     textInputRef.current.focus();
-  //   }
-  // }
-
-  // const ForwardedRefTextInput = forwardRef((props, ref) => 
-  //   <TextInput 
-  //     forwardedRef={textInputRef}
-  //     input={input}
-  //     onChange={ handleChange }
-  //   />
-  // );
+  const handlePaste = (event: React.ClipboardEvent<HTMLInputElement>): void => {
+    console.log(event.clipboardData.getData('Text'));
+    const pastedString = event.clipboardData.getData('Text')
+    const stringArray = pastedString.split(';').filter(item => item !== '')
+    setInputList([...inputList, ...stringArray]);
+  }
 
   return (
     <div
@@ -82,6 +72,7 @@ const MultipleInput: React.FunctionComponent = () => {
         onChange={ handleChange }
         onRemoveAll={ onRemoveAll }
         onKeyDown={ onKeyDown }
+        onPaste={ handlePaste }
       />
     </div>
   );

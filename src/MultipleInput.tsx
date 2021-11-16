@@ -92,6 +92,7 @@ class MultipleInput extends Component<Props, MultipleInputState> {
           onChange={this.handleChange}
           onRemoveAll={this.onRemoveAll}
           onKeyDown={this.onKeyupHandler}
+          onPaste={e => console.log(e)}
         />
       </div>
     );

@@ -9,6 +9,8 @@ type props = {
 	onChange: (event: any) => void,
   onRemoveAll: () => void,
   onKeyDown: (event: any) => void,
+  onPaste: (event: any) => void | unknown,
+
 }
 
 export default function TextInput(props: props) {
@@ -22,6 +24,7 @@ export default function TextInput(props: props) {
         onChange={props.onChange}
         tabIndex={0}
         onKeyDown={props.onKeyDown}
+        onPaste={props.onPaste}
       />
       {props.inputList.length > 0 ?
       <RemoveButton onClick={() => props.onRemoveAll()}>
