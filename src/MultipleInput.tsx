@@ -89,10 +89,11 @@ class MultipleInput extends Component<Props, MultipleInputState> {
           <Pillbox onClick={() => this.onRemove(input)} input={input} />))
         }
         <TextInput
+          forwardedRef={{}}
           input={this.state.input}
           onChange={this.handleChange}
-          onKeyUp={this.onKeyupHandler}
         />
+
         {this.state.inputList.length > 0 ?
         <RemoveButton onClick={() => this.onRemoveAll()}>
           <CloseIconLarge/>
