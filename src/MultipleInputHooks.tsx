@@ -12,9 +12,10 @@ const MultipleInput: React.FunctionComponent = () => {
   const [inputList, setInputList] = useState<string[]>([]);
 
   // remove single item from the list
-  function onRemove(input: string) {
-    const newInputList = inputList.filter(inputString => inputString !== input)
-    setInputList(newInputList);
+  function onRemove(item: string) {
+    const filtered: string[] = inputList.filter(inputString => inputString !== item);
+    setInputList(filtered);
+    setInput(input);
   }
 
   // remove all items from the list
