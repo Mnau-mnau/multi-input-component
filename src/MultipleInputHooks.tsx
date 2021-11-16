@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef, forwardRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import TextInput from './TextInput';
-import RemoveButton from './RemoveButton';
+
 import Pillbox from './Pillbox';
-import CloseIconLarge from './CloseIcon/CloseIconLarge';
 import './MultipleInput.css';
 
 const MultipleInput: React.FunctionComponent = () => {
@@ -10,6 +9,10 @@ const MultipleInput: React.FunctionComponent = () => {
   // set state variables
   const [input, setInput] = useState<string>('');
   const [inputList, setInputList] = useState<string[]>([]);
+
+  // state change trigger until I fix the problem
+  // change on list (add one, remove one) doesn't trigger state change and rerender
+  const [updater, setUpdate] = useState<boolean>(false);
 
   // remove single item from the list
   function onRemove(item: string) {
@@ -36,13 +39,12 @@ const MultipleInput: React.FunctionComponent = () => {
             setInput('');
           }
           break;
-        // this works but doesn't rerender
         case 'Backspace':
           if (input.length < 1 && inputList.length > 0) {
-            const reducedList = inputList;
+            const reducedList: string[] = inputList;
             reducedList.pop();
-            console.log(reducedList)
             setInputList(reducedList);
+            setUpdate(!updater);
           }
           break;
         default:
@@ -53,7 +55,7 @@ const MultipleInput: React.FunctionComponent = () => {
     document.addEventListener('keyup', onKeyUp);
 
     return () => {
-        document.removeEventListener('keyup', onKeyUp);
+      document.removeEventListener('keyup', onKeyUp);
     }
   });
 
